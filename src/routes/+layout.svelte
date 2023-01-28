@@ -4,11 +4,15 @@
 	import '../app.postcss';
 	import { storeValue } from '../store';
 	import { AppShell, AppBar, AppRail, AppRailTile } from '@skeletonlabs/skeleton';
+	import { LightSwitch } from '@skeletonlabs/skeleton';
 </script>
 
 <AppShell>
 	<svelte:fragment slot="header">
-		<AppBar>(zen-of (carlo munguia))</AppBar>
+		<AppBar>
+			(zen-of (carlo munguia))
+			<LightSwitch class="float-right" />
+		</AppBar>
 	</svelte:fragment>
 	<AppRail selected={storeValue}>
 		<svelte:fragment slot="lead" />
