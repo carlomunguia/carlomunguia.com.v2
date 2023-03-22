@@ -5,12 +5,25 @@
 	import { tileVal } from '../store';
 	import { AppShell, AppBar, AppRail, AppRailTile } from '@skeletonlabs/skeleton';
 	import { LightSwitch } from '@skeletonlabs/skeleton';
+	import Hamburger from 'svelte-hamburgers';
+	import { fly, scale } from 'svelte/transition';
+  import { quadOut } from 'svelte/easing';
+	import Menu from '../components/Menu.svelte';
+
+	let open: any;
+
 </script>
 
+<svelte:head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/svelte-hamburgers@3/dist/css/base.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/svelte-hamburgers@3/dist/css/types/spin.css" />
+</svelte:head>
+
+
 <AppShell>
-	<slot slotPageContent="pageContent" />
 	<svelte:fragment slot="header">
-		<AppBar>
+		<AppBar data-menu="mMenu">
+			<Hamburger bind:open />
 			<strong class="text-3xl uppercase"
 				><span class="gradient-heading">(zen-of</span>
 				<span class="gradient-heading">(carlo</span>
@@ -21,9 +34,14 @@
 	</svelte:fragment>
 	<svelte:fragment slot="sidebarLeft">
 		<AppRail selected={tileVal}>
-			<AppRailTile tag="a" href="/projects" title="Projects" value={1}>Projects</AppRailTile>
-			<AppRailTile tag="a" href="/music" title="Music" value={2}>Music</AppRailTile>
-			<AppRailTile tag="a" href="/resume" title="Resume" value={3}>Resume</AppRailTile>
+			{#if open}
+					<AppRailTile tag="a" href="/about" title="About" value={1}>About</AppRailTile>
+					<AppRailTile tag="a" href="/projects" title="Projects" value={2}>Projects</AppRailTile>
+					<AppRailTile tag="a" href="/music" title="Music" value={3}>Music</AppRailTile>
+					<AppRailTile tag="a" href="/resume" title="Resume" value={4}>Resume</AppRailTile>
+				</p>
+			{/if}
 		</AppRail>
 	</svelte:fragment>
+	<slot slotPageContent="pageContent" />
 </AppShell>
