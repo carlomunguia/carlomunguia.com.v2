@@ -30,7 +30,7 @@
 				<span class="gradient-heading">(carlo</span>
 				<span class="gradient-heading">munguia))</span></strong
 			>
-			<LightSwitch class="float-right" />
+			<LightSwitch class="float-right mt-4" />
 		</AppBar>
 	</svelte:fragment>
 	<svelte:fragment slot="sidebarLeft">
