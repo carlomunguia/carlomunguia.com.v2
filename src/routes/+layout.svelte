@@ -8,9 +8,10 @@
 	import Hamburger from 'svelte-hamburgers';
 	import { fly, scale } from 'svelte/transition';
   import { quadOut } from 'svelte/easing';
-	import Menu from '../components/Menu.svelte';
 
 	let open: any;
+
+	let appTile: any[] = [];
 
 </script>
 
@@ -23,7 +24,7 @@
 <AppShell>
 	<svelte:fragment slot="header">
 		<AppBar data-menu="mMenu">
-			<Hamburger bind:open />
+			<Hamburger bind:open --color="white" />
 			<strong class="text-3xl uppercase"
 				><span class="gradient-heading">(zen-of</span>
 				<span class="gradient-heading">(carlo</span>
@@ -35,11 +36,12 @@
 	<svelte:fragment slot="sidebarLeft">
 		<AppRail selected={tileVal}>
 			{#if open}
-					<AppRailTile tag="a" href="/about" title="About" value={1}>About</AppRailTile>
-					<AppRailTile tag="a" href="/projects" title="Projects" value={2}>Projects</AppRailTile>
-					<AppRailTile tag="a" href="/music" title="Music" value={3}>Music</AppRailTile>
-					<AppRailTile tag="a" href="/resume" title="Resume" value={4}>Resume</AppRailTile>
-				</p>
+					<div transition:fly={{ y: -15, delay: 50 }}>
+						<AppRailTile tag="a" href="/about" title="About" value={1}>About</AppRailTile>
+						<AppRailTile tag="a" href="/projects" title="Projects" value={2}>Projects</AppRailTile>
+						<AppRailTile tag="a" href="/music" title="Music" value={3}>Music</AppRailTile>
+						<AppRailTile tag="a" href="/resume" title="Resume" value={4}>Resume</AppRailTile>
+					</div>
 			{/if}
 		</AppRail>
 	</svelte:fragment>
